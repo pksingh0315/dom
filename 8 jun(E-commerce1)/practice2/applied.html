@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pradeep</title>
+    <link rel="stylesheet" href="commonStyles.css" />
+    <style>
+      #body > tr > td:nth-child(5) {
+        background-color: red;
+        color: antiquewhite;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="links">
+      <div><a href="index.html">Home</a></div>
+      <div><a href="applied.html">Applied Jobs</a></div>
+      <div><a href="bookmark.html">Bookmarks</a></div>
+    </div>
+
+    <select id="sortName" onchange="handleNameSort()">
+      <option value="">sort by name</option>
+      <option value="Ascending">Ascending</option>
+      <option value="Descending">Descending</option>
+    </select>
+
+    <select id="sortPrice">
+      <option value="">sort by Price</option>
+      <option value="Ascending">Ascending</option>
+      <option value="Descending">Descending</option>
+    </select>
+
+    <select id="filter">
+      <option value="">Filter by Role</option>
+      <option value="Backend">Backend</option>
+      <option value="Frontend">Frontend</option>
+      <option value="FSD">FSD</option>
+    </select>
+
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Job applied</th>
+            <th>Salary expected</th>
+            <th>Add to bookmark</th>
+          </tr>
+        </thead>
+        <tbody id="body">
+          <!-- Append your output to tbody -->
+        </tbody>
+      </table>
+    </main>
+  </body>
+  <script>
+    //you need to code here
+    //get data from local storage of key name "jobList"
+    let localData = JSON.parse(localStorage.getItem("jobList"));
+
+    //create table and append all data
+
+    function displayTable(localData) {
+      document.querySelector("tbody").innerHTML = "";
+      localData.forEach((ele) => {
+        let tr = document.createElement("tr");
+
+        let td1 = document.createElement("td");
+        td1.innerText = ele.Name;
+
+        let td2 = document.createElement("td");
+        td2.innerText = ele.Email;
+
+        let td3 = document.createElement("td");
+        td3.innerText = ele.jobType;
+
+        let td4 = document.createElement("td");
+        td4.innerText = ele.salary;
+
+        let td5 = document.createElement("td");
+        td5.innerText = "Bookmark";
+
+        td5.addEventListener("click", function () {
+          //invoke bookmark function
+          bookmark(ele);
+        });
+
+        tr.append(td1, td2, td3, td4, td5);
+
+        document.querySelector("#body").append(tr);
+      });
+    }
+    //invoke  function
+    displayTable(localData);
+
+    //*****for bookmark ****
+
+    let bookMarkArr = JSON.parse(localStorage.getItem("bookmarks")) || [];
+
+    //console.log(bookMarkArr)
+    function bookmark(el) {
+      bookMarkArr.push(el);
+      //console.log(bookMarkArr)
+
+      localStorage.setItem("bookmarks", JSON.stringify(bookMarkArr));
+    }
+
+    //***************SORTING BY NAME*****************
+
+    function handleNameSort() {
+      let select = document.querySelector("#sortName").value;
+
+      if (select == "Ascending") {
+        localData.sort(function (a, b) {
+          if (a.Name > b.Name) return 1;
+          if (a.Name < b.Name) return -1;
+          return 0;
+          console.log(localData);
+        });
+        displayTable(localData)
+        //console.log('hello')
+      }
+      if (select == "Descending") {
+        localData.sort(function (a, b) {
+          if (a.Name > b.Name) return -1;
+          if (a.Name < b.Name) return 1;
+          return 0;
+        });
+        displayTable(localData);
+      }
+    }
+
+    //****************SORT BY PRICE***************
+    
+       document.querySelector("#sortPrice").addEventListener("change",handleSortPrice);
+
+       function handleSortPrice(){
+        let select=document.querySelector("#sortPrice").value
+
+        if (select == "Ascending") {
+          
+        localData.sort(function (a, b) {
+          if (a.salary > b.salary) return 1;
+          if (a.salary < b.salary) return -1;
+          return 0;
+          console.log(localData);
+        });
+        displayTable(localData)
+        //console.log('hello')
+      }
+      if (select == "Descending") {
+        localData.sort(function (a, b) {
+          if (a.salary > b.salary) return -1;
+          if (a.salary < b.salary) return 1;
+          return 0;
+        });
+        displayTable(localData);
+      }
+       }
+
+   //***********FILTER****************
+   document.querySelector("#filter").addEventListener("change",handleFilter);
+   function handleFilter(){
+    let filterData=document.querySelector("#filter").value
+    let x=localData.filter(function(elm){
+      return elm.jobType==filterData
+    })
+    displayTable(x)
+    //Note:-for visible filter data first of all empty the inner html(example line no.-70(tbody.innerHTML=""))
+    console.log(filterData)
+   }
+    
+  </script>
+</html>

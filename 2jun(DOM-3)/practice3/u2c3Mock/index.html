@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>U2C3 Mock</title>
+    <style>
+      #report{
+        display: grid;
+        /* border: 1px solid red; */
+        width: 100%;
+        margin-top: 30px;
+        
+       grid-template-columns: repeat(4,1fr);
+        grid-template-rows: repeat(3,auto); 
+        gap :20px
+      }
+      #main{
+        width: 90%;
+        height: 300px;
+        /* border: 2px solid teal; */
+        text-align: center;
+        background-color: bisque;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 10px;
+        
+      }
+      p{
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <select id="month">
+        <option value="January">JANUARY</option>
+        <option value="February">FEB</option>
+        <option value="MARCH">MARCH</option>
+        <option value="APRIL">APRIL</option>
+        <option value="MAY">MAY</option>
+        <option value="JUNE">JUNE</option>
+        <option value="JULY">JULY</option>
+        <option value="AUGUST">AUGUST</option>
+        <option value="SEPETEMBER">SEPETEMBER</option>
+        <option value="OCTOBER">OCTOBER</option>
+        <option value="NOVEMBER">NOVEMBER</option>
+        <option value="DECEMBER">DECEMBER</option>
+      </select>
+
+      <input id="income" type="number" name="income" placeholder="Enter Income" />
+
+      <input id="expense" type="number" name="expense"  placeholder="Enter expense" />
+
+      <input type="submit" />
+    </form>
+
+    <div id="report">
+          <!-- Append your cards here -->
+    </div>
+  </body>
+</html>
+
+<script>
+    document.querySelector("form").addEventListener("submit",submitForm)
+   
+    function submitForm(event){
+      event.preventDefault()
+      let month=document.querySelector("#month").value
+      let income=document.querySelector("#income").value
+
+      // OR we can catch by name
+      //let income=event.target.income.value
+  
+      let expense=document.querySelector("#expense").value
+      let report=document.querySelector("#report")
+      //create all tag
+      let h1=document.createElement("h1")
+      h1.innerText=month
+
+      let p1=document.createElement("p")
+      p1.innerText=income
+
+      let p2=document.createElement("p")
+      p2.innerText=expense
+
+      let h3=document.createElement("h3")
+      if(income<expense){
+        h3.innerText="DEBT"
+        h3.style.color="red"
+      }else if(income>expense){
+        h3.innerText="SAVE"
+        h3.style.color="green"
+      }else{
+        h3.innerText='BREAKEVEN'
+        h3.style.color='orange'
+      }
+
+      //create button
+      let button=document.createElement("button")
+      button.setAttribute("id",'btn')
+      button.innerText='DELETE'
+
+      button.addEventListener("click",deleteAll)
+
+      let box=document.createElement("div")
+      box.setAttribute("id",'main')
+
+      box.append(h1,p1,p2,h3,button)
+    
+    
+      report.append(box)
+      event.target.income.value=""
+      event.target.expense.value=""
+  
+    }
+  
+    function deleteAll(event){
+      event.target.parentNode.remove()
+      
+      
+
+    }
+  
+
+
+</script>

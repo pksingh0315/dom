@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>U2C3 Mock</title>
+    <style>
+      .box{
+        box-shadow: 2px 2px 10px gray;
+        width: 20%;
+        padding: 2rem 3rem ;
+        text-align: center;
+        margin: 1.4rem 0;
+
+      }
+      h1{
+        font-size: 2rem;
+        font-weight: 700;
+        color: gray;
+      }
+      p{
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <select id="month" name="month">
+        <option value="January">JANUARY</option>
+        <option value="February">FEB</option>
+        <option value="MARCH">MARCH</option>
+        <option value="APRIL">APRIL</option>
+        <option value="MAY">MAY</option>
+        <option value="JUNE">JUNE</option>
+        <option value="JULY">JULY</option>
+        <option value="AUGUST">AUGUST</option>
+        <option value="SEPETEMBER">SEPETEMBER</option>
+        <option value="OCTOBER">OCTOBER</option>
+        <option value="NOVEMBER">NOVEMBER</option>
+        <option value="DECEMBER">DECEMBER</option>
+      </select>
+
+      <input id="income" type="number" name="income" placeholder="Enter Income" />
+
+      <input id="expense" type="number" name="expenss" placeholder="Enter expense" />
+
+      <input type="submit" />
+    </form>
+
+    <div id="report">
+          <!-- Append your cards here -->
+    </div>
+  </body>
+</html>
+
+<script>
+  let form=document.querySelector("form");
+  let  root=document.querySelector("body");
+  let userdata={};
+
+function handleIncomedata(e){
+  e.preventDefault();
+  userdata.income=e.target.income.value;
+  userdata.expenss=e.target.expenss.value;
+  userdata.month=e.target.month.value;
+  let count=1
+let div=document.createElement("div");
+div.classList.add("box")
+let h1=document.createElement("h1")
+h1.innerText=userdata.month;
+
+
+  let incomeh3=document.createElement("p")
+  let expenssh3=document.createElement("p")
+
+  incomeh3.innerText=userdata.income;
+  expenssh3.innerText=userdata.expenss;
+
+if(userdata.income>userdata.expense){
+  var h3=document.createElement("h3") 
+  h3.innerText="Save";
+
+}else if(userdata.expense>userdata.income){
+  var h3=document.createElement("h3") 
+  h3.innerText="DEbte";
+
+}
+  
+div.append(h1,incomeh3,expenssh3,h3)
+  root.append(div)
+}
+
+
+form.addEventListener("submit",handleIncomedata)
+  
+</script>

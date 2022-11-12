@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <input id="mail" type="email" placeholder="Email">
+    <input id="pass" type="number" placeholder="password">
+    <button onclick="pks()"> SUBMIT</button>
+    <a href="homepage.html">home page</a>
+</body>
+</html>
+<script>
+        let localData=JSON.parse(localStorage.getItem("UserData"))
+        function pks(){
+            let usermail=document.querySelector("#mail").value;
+            let userpass=document.querySelector("#pass").value
+            let ans="wrong Data"
+            for(let i=0;i<localData.length;i++){
+                if(usermail==localData[i].userEmail && userpass==localData[i].userPassword){
+                    ans="successful"
+                }
+            }
+
+               
+            alert (ans)
+                
+                //console.log(el)
+            ;
+        }
+        
+        //console.log(localData)
+</script>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signin</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: rgb(233, 220, 220);
+      }
+      div {
+        background-color: white;
+        width: 30%;
+        margin: auto;
+        padding: 3%;
+        margin-top: 50px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-color: bisque;
+      }
+      input,
+      button {
+        width: 100%;
+        font-size: 20px;
+        display: block;
+        margin-top: 20px;
+      }
+      #text {
+        width: 80%;
+      }
+      a {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form>
+        <input type="email" id="email" placeholder="Email" />
+        <input type="password" id="password" placeholder="Password" />
+        <button>Sign Up</button>
+      </form>
+      <div id="text">
+        <p>Don't have a account</p>
+        <a href="signup.html">Signup</a>
+
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+    //step:-
+    //1-get data from local storage of key "userData"
+    //2-compare 'userData' email and password with signin email and password 
+
+    //******get data from local storage of key "userData"****//
+
+  
+  let localData = JSON.parse(localStorage.getItem("userData"));
+//******apply event on form tag********//
+  document.querySelector("form").addEventListener("submit", formSub);
+
+  function formSub(event) {
+    event.preventDefault();
+
+    let email = document.querySelector("#email").value;
+    let pass = document.querySelector("#password").value;
+
+    let obj1 = {
+      personEmail: email,
+      personPassword: pass,
+    };
+
+    if(checkData(obj1.personEmail,obj1.personPassword)==true){
+        localStorage.setItem("signIn",JSON.stringify(obj1))
+        alert("sign in successful")
+        //*********redirect to 'index.html' page
+        window.location.href="index.html"
+    }else{
+        alert("wrong email or password")
+    }
+
+
+    //*********check email and password already present in localData or not******//
+    function checkData() {
+      let filtered = localData.filter((ele) => {
+        return email === ele.userEmail && ele.userPassword === pass;
+      })
+        if(filtered.length>0){
+            return true
+        }else{
+            return false
+        }
+     
+    }
+
+   
+  }
+
+
+</script>

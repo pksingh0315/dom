@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>we2</title>
+    <style>
+        button{
+         
+            margin-right: 20px;
+            padding: 10px;
+        
+           
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // let name=["Primary","Secondary","Success","Danger","Warning","Info","light","Dark","link"];
+    // let bgcolor=["blue","gray","green","red","orange","cyan","white","black","white"];
+    // let color=["white","white","white","white","black","white","black","white","blue"]
+    // for(let i=0;i<9;i++){
+    //     let btn=document.createElement("button");
+    //     btn.innerText=name[i];
+    //     btn.style.backgroundColor=bgcolor[i]
+    //     btn.style.color=color[i]
+    //     document.querySelector("body").append(btn)
+    //      }
+    let arr=[{name:"Primary",color:"white",bgcolor:"blue"}, 
+    {name:"secondary",color:"white",bgcolor:"gray"},
+    {name:"Success",color:"white",bgcolor:"green"},
+    {name:"Danger",color:"white",bgcolor:"red"},
+    {name:"Warning",color:"black",bgcolor:"orange"},
+    {name:"Info",color:"white",bgcolor:"cyan"},
+    {name:"Light",color:"black",bgcolor:"white"},
+    {name:"Dark",color:"white",bgcolor:"black"},
+    {name:"Link",color:"blue",bgcolor:"white"}
+    ];
+    arr.forEach(function(el){
+     
+        let btn=document.createElement("button");
+        btn.innerText=el.name;
+        btn.style.backgroundColor=el.bgcolor;
+        btn.style.color=el.color
+        document.querySelector("body").append(btn)   
+    })
+
+</script>

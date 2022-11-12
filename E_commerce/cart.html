@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cartpage</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        #container{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: auto;
+            gap: 40px 10px;
+            width: 80%;
+            margin: auto;
+            margin-top: 100px;
+        }
+        #container>div{
+            width: 80%;
+            /* border: 1px solid red; */
+            text-align: center;
+           
+
+        }
+        #container>div>img{
+            width: 100%;
+        }
+        /* ********Navbar*********** */
+        #navbar{
+          display: flex;
+          width: 100%;
+          height: 60px;
+          background-color: slategray;
+          position: fixed;
+          top: 0;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          justify-content: flex-end;
+          align-items: center;
+          
+
+
+        }
+        #price{
+          width: 10%;
+          background-color: white;
+          margin-right: 20px;
+          padding: 5px 20px 5px 20px;
+          border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+  <div id="navbar">
+    <h3 id="price">Total Rs.</h3>
+  </div>
+  
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+    //******get data from local storage of key'cartData'******//
+    let productData=JSON.parse(localStorage.getItem("cartData"))
+    
+ 
+    
+    function displayData(data) {
+    container.innerHTML=""
+    data.forEach((ele,index) => {
+      let productDiv = document.createElement("div");
+
+      let image = document.createElement("img");
+      image.src = ele.img;
+
+      let name=document.createElement('h3')
+      name.innerText=ele.name
+
+      let catagory=document.createElement("h4")
+      catagory.innerText=ele.catagory
+
+      let price=document.createElement("h4")
+      price.innerText=ele.price
+
+      let btn=document.createElement("button");
+      btn.innerText="Delete"
+
+      btn.addEventListener('click',function(){
+
+        deleteCartData(index)
+        
+       
+      })
+
+      productDiv.append(image,name,catagory,price,btn);
+      container.append(productDiv);
+    });
+  }
+  displayData(productData);
+//*******function for delete data from cart***********//
+  function deleteCartData(index){
+    productData.splice(index,1)
+    localStorage.setItem('cartData',JSON.stringify(productData))
+    window.location.reload()
+  }
+
+  //***********FOR TOTAL CART PRICE**************// 
+
+  function allPrice(x){
+    let price=document.querySelector("#price")
+    let totalPrice=0
+    x.forEach((ele)=>{
+       totalPrice=Number(totalPrice+(+ele.price))
+      
+    })
+   
+    price.innerText='Toatal Rs.'+"  " + totalPrice
+  }
+allPrice(productData)
+</script>

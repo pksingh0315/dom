@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+        form{
+            width: 60%;
+        }
+        input{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Home Page</h1>
+    <form >
+        <input id="name" type="text" placeholder="Name">
+        <input id="mail" type="email" placeholder="Email ID">
+        <input id="pass" type="number" placeholder="password"> 
+       
+        <input type="submit">
+    
+      
+    </form>
+    <h2>
+        <a href="login.html">login</a>
+    </h2>
+   
+</body>
+</html>
+<script>
+
+    let arr=JSON.parse(localStorage.getItem("UserData"))||[]
+
+    console.log(arr)
+    document.querySelector("form").addEventListener("submit",submitForm)
+    function submitForm(event){
+
+        event.preventDefault();
+        let name=document.querySelector("#name").value
+        let email=document.querySelector("#mail").value
+        let password=document.querySelector("#pass").value
+
+        let obj={
+            userName:name,
+            userEmail:email,
+            userPassword:password
+
+        }
+        arr.push(obj)
+        localStorage.setItem("UserData",JSON.stringify(arr))
+        
+
+    }
+
+</script>

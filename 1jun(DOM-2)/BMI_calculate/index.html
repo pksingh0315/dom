@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            /* border: 1px solid; */
+            width: 30%;
+            margin: auto;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            background-color: bisque;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        #display{
+            border: 1px solid;
+            margin: auto;
+            text-align: center;
+            border-radius: 15px;
+        }
+        p{
+            font-weight: bolder;
+            background-color: aliceblue;
+           
+            
+        }
+        h2{
+            background-color: aliceblue;
+        }
+        #weight{
+            padding: 20px;
+            font-size: 20px;
+        }
+        #height{
+            padding: 10px;
+            font-size: 20px;
+        }
+        #weight>input{
+            font-size: 20px;
+        }
+        #height>input{
+            font-size: 20px;
+        }
+        #btn{
+            padding: 10px;
+            display: grid;
+            margin: auto;
+            text-align: center;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="display">
+            <h2>BMI</h2>
+            <p>result</p>
+        </div>
+        <div id="weight">
+            <label for="weight">Put weight(KG)</label>
+            <input id="userWeight" type="number">
+        </div>
+        <div id="height">
+            <label for="height">Put height(Meter)</label>
+            <input id="userHeight" type="number">
+        </div>
+        <button id="btn">Calculate BMI</button>
+    </div>
+  
+</body>
+</html>
+<script>
+    document.querySelector("#btn").addEventListener("click",myfunc)
+    let h2=document.querySelector("h2")
+    let p=document.querySelector("p")
+   
+    function myfunc(){
+        let mass=document.querySelector("#userWeight").value
+    let height=document.querySelector("#userHeight").value
+    bmi=(mass)/(height*height)
+    bmi=bmi.toFixed(3)
+    h2.innerText=bmi
+    if(bmi<=18.4){
+        p.innerText="Under Weight"
+    }
+    else if(bmi>=18.5&&bmi<=24.9){
+        p.innerText="Normal Weight"
+    }
+    else if(bmi>=25 && bmi<=29.9){
+        p.innerText="Over Weight"
+    }
+    else if(bmi>=30){
+        p.innerText="Obese"
+    }
+    
+    }
+   
+</script>

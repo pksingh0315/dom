@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>masai investors</title>
+    <style>
+        #container{
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(3,auto);
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+        }
+        p+img{
+            width: 100px;
+        }
+       
+        
+     
+       
+        /* ------------------------------------------------- */
+        
+        
+        #container>div{
+           
+            border-radius: 20px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        #container>div>img:nth-child(1){
+            width:250px;
+            border-radius: 10px 10px 0px 0px;
+        }
+        #container>div>p+img{
+            width:100px;
+            margin-top: -20px;
+            
+        }
+        #container>div>img+h4{
+            margin-top: -5px;
+        }
+        #container>div>h4+p{
+            margin-top: -10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    let investors=[{image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg",name:"Vijay Shekhar Sharma",role:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Rectangle_427_637d69bb57.png",name:"Kunal Shah",role:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/amrish_rau_pine_labs_144e5e587c.jpg",name:"Amrish Rao",role:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Sampad_swain_Instamojo_f12bf6341e.jpg",name:"Sampad swain",role:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Ankush_Sachdeva_Sharechat_4e44dbbe6b.jpg",name:"Ankush Schdeva",role:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/bhanu_pratap_singh_sharechat_11fdd7b47a.jpg",name:"Bhanu Pratap Singh",role:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/farid_ahsan_sharechat_1251f28141.png",name:"Farid Ahsan",role:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/amrish_rau_pine_labs_144e5e587c.jpg",name:"Amit Kumar singh",role:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/farid_ahsan_sharechat_1251f28141.png",name:"Akhil gupta",role:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Amit_Kumar_Agarwal_Nobroker_a8a279ad91.jpg",name:"kamla prasad",role:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},
+    {image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Akhil_Gupta_Nobroker_539cd97f6c.jpg",name:"vipin Garg",role:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"},{image:"https://masai-website-images.s3.ap-south-1.amazonaws.com/saurbh_garg_nobroker_c0c71cc431.jpeg",name:"Saurabh Phathk",role:"Founder & CEO",logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"}];
+
+
+    investors.forEach(function(el){
+       let box=document.createElement("div");
+        document.querySelector("#container").append(box)
+        let avatar=document.createElement("img");
+        avatar.setAttribute("src",el.image)
+      
+      let nam=document.createElement('h4');
+      nam.innerText=el.name;
+      let position=document.createElement('p');
+      position.innerText=el.role;
+      let company=document.createElement('img');
+      company.setAttribute("src",el.logo)
+      box.append(avatar,nam,position,company)
+        console.log(el)
+    })
+</script>

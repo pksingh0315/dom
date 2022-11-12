@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mini Calculator</title>
+  </head>
+  <body>
+    <input id="first" type="number" placeholder="enter 1st Number" />
+    <input id="sec" type="number" placeholder="enter 2nd number" />
+    <button id="add">add</button>
+    <button id="subtract">subtract</button>
+    <button id="mul">Multiply</button>
+    <button id="divide">Divide</button> 
+ 
+  </body>
+</html>
+<script>
+  document.querySelector("#add").addEventListener("click", myadd);
+  document.querySelector("#subtract").addEventListener("click", mysub);
+  document.querySelector("#mul").addEventListener("click", mymultiple);
+  document.querySelector("#divide").addEventListener("click", mydivisible);
+  function myadd() {
+    let x = document.querySelector("#first").value;
+    let y = document.querySelector("#sec").value;
+   
+    alert(Number(x)+Number(y))
+  }
+  function mysub(){
+    let x = document.querySelector("#first").value;
+    let y = document.querySelector("#sec").value;
+   
+    alert(Number(x)-Number(y))
+  }
+  function mymultiple(){
+    let x = document.querySelector("#first").value;
+    let y = document.querySelector("#sec").value;
+   
+    alert(Number(x)*Number(y))
+  }
+  function mydivisible(){
+    let x = document.querySelector("#first").value;
+    let y = document.querySelector("#sec").value;
+   
+    alert(Number(x)/Number(y))
+  }
+</script>

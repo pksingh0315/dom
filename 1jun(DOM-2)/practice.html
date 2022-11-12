@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice</title>
+    <style>
+      #box{
+        display: grid;
+        grid-template-columns: repeat(4,100px);
+        grid-template-rows: 100px;
+        gap: 30px;
+
+      }
+      #box>div{
+        background-color: teal;
+        font-size: 40px;
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+  <h1>display</h1>
+  <div id="box">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </div>
+   
+</body>
+</html>
+<script>
+ let x=document.querySelectorAll("#box>div");
+ for(let i=0;i<x.length;i++){
+   x[i].addEventListener("click",pks)
+ }
+ let h1=document.querySelector("h1")
+ function pks(event){
+  h1.innerText=event.target.innerText
+   
+ }
+
+</script>

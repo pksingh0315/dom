@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age check</title>
+</head>
+<body>
+    <input id="age" type="text" placeholder="Enter Age">
+    <button onclick="clickMe()"> Submit</button>
+    <p id="result"> Display Result here</p>
+</body>
+</html>
+<script>
+
+    function clickMe(){
+        let userAge=document.getElementById("age").value;
+  
+        let p=document.getElementById("result")
+        if(userAge>18){
+            p.innerText="You can Drive In India!"
+        }else if(userAge<18){
+            p.innerText="you can't drive in India!"
+        }else{
+            p.innerText='you just old enough to drive in India!'
+        }
+
+        
+    }
+</script>

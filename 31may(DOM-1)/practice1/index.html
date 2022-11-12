@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        #main{
+            border: 1px solid red;
+            width: 30%;
+            height: 300px;
+            margin: auto;
+            background-color: bisque;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-style: initial;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 100px;
+        }
+        #result{
+            width: 60%;
+            height: 50px;
+            border: 1px solid orange;
+            margin: auto;
+            text-align: center;
+            background-color: aliceblue;
+            border-radius: 10px;
+         
+        }
+        #input>input{
+            /* border: 1px solid; */
+            padding: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 5px;
+
+        }
+        #btn>button{
+            padding: 10px;
+            margin-left: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        #input{
+            /* border: 1px solid; */
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+        }
+        #btn{
+            margin: auto;
+            text-align: center;
+            padding: 10px;
+           
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h1 id="result"></h1>
+        <div id="input">
+            <input id="num1" type="number" placeholder="Enter Number1">
+            <input id="num2" type="number" placeholder="Enter Number 2">
+        </div>
+        <div id="btn">
+            <button onclick="add()">Add</button>
+            <button onclick="subtract()">Subtract</button>
+            <button onclick="multiply()">Multiply</button>
+            <button onclick="divide()">Divide</button>
+        </div>
+    </div>
+
+
+ 
+</body>
+</html>
+<script>
+
+    function add(){
+        let res=document.getElementById("result")
+        let num1=document.getElementById("num1").value
+        let num2=document.getElementById("num2").value
+        
+        res.innerText=(+num1)+(+num2)
+    }
+    function subtract(){
+        let res=document.getElementById("result")
+        let num1=document.getElementById("num1").value
+        let num2=document.getElementById("num2").value
+        
+        res.innerText=(+num1)-(+num2)
+    }
+    function multiply(){
+        let res=document.getElementById("result")
+        let num1=document.getElementById("num1").value
+        let num2=document.getElementById("num2").value
+        
+        res.innerText=(+num1)*(+num2)
+        
+    }
+    function divide(){
+        let res=document.getElementById("result")
+        let num1=document.getElementById("num1").value
+        let num2=document.getElementById("num2").value
+        
+        res.innerText=(+num1)/(+num2)
+    }
+    
+
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+<body>
+    <form >
+        <input id="name" type="text" placeholder="Nmae">
+        <input id="age" type="number" placeholder="Age">
+        <input id="mbl" type="number" placeholder="Contact Number">
+        <input type="submit">
+    </form>
+</body>
+</html>
+<script>
+    //Create a Empty array out of function
+      let arr=[]
+
+    document.querySelector("form").addEventListener("submit",submitData);
+    function submitData(event){
+        event.preventDefault()
+        //please note that here name.value always take inside function
+        let name=document.getElementById("name").value
+        let umer=document.getElementById("age").value
+        let phone=document.getElementById("mbl").value
+      
+        //take an object to store the data
+        let obj={
+            userName:name,
+            userAge:umer,
+            userMobile:phone
+        }
+        //console.log(obj)
+       arr.push(obj)
+
+       event.target.name.value=""
+       event.target.age.value=""
+       event.target.mbl.value=""
+       console.log(arr)
+        }
+
+   
+
+
+</script>
